@@ -1,0 +1,19 @@
+﻿@page "/display"
+
+@using BlazorName.Data
+@inject RandomService RandomService
+<h3>Display</h3>
+
+<div>
+    My random ID is :@RandomService.RandomId
+</div>
+
+<div>
+    @RandomService.RandomStart
+</div>
+
+@code {
+    [Parameter]
+    public string AlertText { get; set; }
+
+}

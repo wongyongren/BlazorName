@@ -1,15 +1,10 @@
 using BlazorName.Data;
+using BlazorName.Shared;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorName
 {
@@ -29,6 +24,9 @@ namespace BlazorName
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddTransient<RandomService>();
+
+            //services.AddTransient<IAuthorService, AuthorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,5 +54,9 @@ namespace BlazorName
                 endpoints.MapFallbackToPage("/_Host");
             });
         }
+    }
+
+    internal interface IAuthorService
+    {
     }
 }
