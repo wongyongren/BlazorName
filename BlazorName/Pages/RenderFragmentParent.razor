@@ -1,0 +1,28 @@
+﻿@page "/render-fragment-parent"
+
+<h1>Render child content</h1>
+
+<RenderFragmentChild>
+    Content of the child component is supplied
+    by the parent component.
+</RenderFragmentChild>
+
+<h1>Three children with an index variable</h1>
+
+@for (int c = 0; c < 3; c++)
+{
+    var current = c;
+
+    <RenderFragmentChild>
+        Count: @current
+    </RenderFragmentChild>
+}
+
+<h1>Second example of three children with an index variable</h1>
+
+@foreach (var c in Enumerable.Range(0, 3))
+{
+    <RenderFragmentChild>
+        Count: @c
+    </RenderFragmentChild>
+}
