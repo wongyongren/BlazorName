@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@using BlazorName.UIThemeClasses
 
 <div class="page">
     <div class="sidebar">
@@ -6,12 +7,14 @@
     </div>
 
     <div class="main">
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <div class="content px-4">
-            @Body
-        </div>
+        <CascadingValue Value="theme">
+            <div class="content px-4">
+                @Body
+            </div>
+        </CascadingValue>
     </div>
 </div>
+
+@code {
+    private ThemeInfo theme = new() { ButtonClass = "btn-danger" };
+}
